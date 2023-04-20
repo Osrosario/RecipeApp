@@ -1,5 +1,6 @@
 package edu.quinnipiac.ser210.recipeapp
 
+/*
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -30,3 +31,4 @@ data class Recipe (
     @ColumnInfo(name = "instructions")
     var instructions: ArrayList<String> = ArrayList<String>()
 )
+*/
