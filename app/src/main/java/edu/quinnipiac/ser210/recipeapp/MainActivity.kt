@@ -53,13 +53,18 @@ class MainActivity : AppCompatActivity()
         // Find the search item in the menu and assign it to the searchItem property
         searchItem = menu.findItem(R.id.searchRecipe)
         val searchView = searchItem?.actionView as SearchView
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener
+        {
+            override fun onQueryTextSubmit(query: String?): Boolean
+            {
                 // create a bundle and pass the search term to SearchFragment
                 val bundle = Bundle()
                 bundle.putString("searchTerm", query)
+
                 val searchFragment = SearchFragment()
                 searchFragment.arguments = bundle
+
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.nav_host_fragment, searchFragment)
                     .commit()
@@ -67,7 +72,8 @@ class MainActivity : AppCompatActivity()
                 return true
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
+            override fun onQueryTextChange(newText: String?): Boolean
+            {
                 return false
             }
         })

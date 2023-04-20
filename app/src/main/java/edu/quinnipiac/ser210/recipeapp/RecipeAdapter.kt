@@ -45,13 +45,13 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
         holder.bind(position)
     }
 
-    fun setHerosListItems(recipeListparam: SearchResult)
+    fun setRecipeListItems(recipeListparam: SearchResult)
     {
         recipeList.clear()
         recipeList.addAll(recipeListparam.results)
         notifyDataSetChanged()
 
-        Log.d("RecipeAdapter", "setHerosListItems() called with ${recipeListparam.results.size} items")
+        Log.d("RecipeAdapter", "setRecipeListItems() called with ${recipeListparam.results.size} items")
     }
 
     inner class MyViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView)
@@ -89,10 +89,10 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
                 .apply(RequestOptions().centerCrop())
                 .into(image)
         }
-
     }
 
-    fun clearItems() {
+    fun clearItems()
+    {
         recipeList.clear()
         notifyDataSetChanged()
     }

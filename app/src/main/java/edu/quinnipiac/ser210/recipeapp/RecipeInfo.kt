@@ -7,7 +7,7 @@ package edu.quinnipiac.ser210.recipeapp
  * A data class to assign data retrieved from the API service.
  */
 
-data class RecipeInfo(
+data class RecipeInfo (
     val id: Int?,
     val title: String?,
     val image: String?,

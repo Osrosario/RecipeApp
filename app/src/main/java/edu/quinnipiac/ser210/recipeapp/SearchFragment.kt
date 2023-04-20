@@ -26,19 +26,22 @@ import retrofit2.Response
  * of recipes and sends it to the RecipeAdapter.kt to display information.
  */
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment()
+{
     lateinit var recyclerView: RecyclerView
     lateinit var recyclerAdapter: RecipeAdapter
     lateinit var searchTerm: String
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    {
         val view = inflater.inflate(R.layout.fragment_search, container, false)
         val searchTerm = arguments?.getString("searchTerm")
         this.searchTerm = searchTerm.toString()
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
+    {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.recyclerview)
         recyclerAdapter = RecipeAdapter(requireContext(), Navigation.findNavController(view))
@@ -49,22 +52,27 @@ class SearchFragment : Fragment() {
         searchRecipes()
     }
 
-    private fun searchRecipes() {
+    private fun searchRecipes()
+    {
         val apiInterface = RecipeInterface.create().searchRecipes(searchTerm)
+
         view?.clearFocus()
-        apiInterface?.enqueue(object : Callback<SearchResult?> {
-            override fun onResponse(
-                call: Call<SearchResult?>,
-                response: Response<SearchResult?>
-            ) {
-                if (response.body() != null) {
+
+        apiInterface?.enqueue(object : Callback<SearchResult?>
+        {
+            override fun onResponse(call: Call<SearchResult?>, response: Response<SearchResult?>)
+            {
+                if (response.body() != null)
+                {
                     recyclerAdapter.clearItems()
-                    recyclerAdapter.setHerosListItems(response.body()!! as SearchResult)
+                    recyclerAdapter.setRecipeListItems(response.body()!! as SearchResult)
                 }
             }
 
-            override fun onFailure(call: Call<SearchResult?>, t: Throwable) {
-                if (t != null) {
+            override fun onFailure(call: Call<SearchResult?>, t: Throwable)
+            {
+                if (t != null)
+                {
                     t.message?.let { Log.d("onFailure", it) }
                 }
             }
