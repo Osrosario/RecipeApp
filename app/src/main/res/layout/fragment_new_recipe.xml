@@ -8,171 +8,585 @@
     android:fillViewport="true"
     tools:context=".NewRecipeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/stockImage"
+            android:id="@+id/recipeImage"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/recipe"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="160dp"
+            android:src="@drawable/recipe" />
 
         <EditText
-            android:id="@+id/titleEditText"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stockImage">
-
-        </EditText>
-
-        <TextView
-            android:id="@+id/prepTimeLabel"
+            android:id="@+id/nameEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:text="Prep Time:"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
-
-        <EditText
-            android:id="@+id/editTextNumber"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="0"
-            android:inputType="number"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/prepTimeLabel"
-            app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
-
-        <TextView
-            android:id="@+id/prepMinLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:text="min(s)"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/editTextNumber"
-            app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
-
-        <EditText
-            android:id="@+id/editTextNumber2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:ems="10"
-            android:hint="0"
-            android:inputType="number"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/cookTimeLabel"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
-
-        <TextView
-            android:id="@+id/cookTimeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Cook Time:"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/prepTimeLabel" />
-
-        <TextView
-            android:id="@+id/cookMinLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="min(s)"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
-            app:layout_constraintTop_toBottomOf="@+id/prepMinLabel" />
-
-        <TextView
-            android:id="@+id/totalTimeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Total Time:"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cookTimeLabel" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="19dp"
-            android:text="0"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/totalTimeLabel"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
-
-        <TextView
-            android:id="@+id/totalMinLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="25dp"
-            android:text="min(s)"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/cookMinLabel" />
-
-        <TextView
-            android:id="@+id/ingrediantsLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="INGREDIENTS"
+            android:inputType="text"
+            android:textColor="@color/black"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/totalMinLabel" />
+            android:hint="Recipe Name" />
+
+        <TableLayout
+            android:id="@+id/infoTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prepTimeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prep Time:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/prepTimeEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:inputType="number"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/prepMinLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="min(s)"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/cookTimeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cook Time:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/cookTimeEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:inputType="number"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/cookMinLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="min(s)"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/spacer"
+                android:layout_margin="5dp" />
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/totalTimeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Time:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/totalTimeEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:ems="3"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/totalMinLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="min(s)"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </TableRow>
+
+        </TableLayout>
 
         <TextView
-            android:id="@+id/instructions"
-            android:layout_width="wrap_content"
+            android:id="@+id/ingredientsLabel"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Instructions"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ingrediantsLabel" />
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="INGREDIENTS"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <androidx.constraintlayout.widget.Barrier
-            android:layout_width="wrap_content"
+        <View
+            android:id="@+id/ingrUnderline"
+            android:layout_width="200dp"
+            android:layout_height="3dp"
+            android:layout_gravity="center"
+            android:background="@color/black" />
+
+        <TableLayout
+            android:id="@+id/ingrTable"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:barrierDirection="top"
-            tools:layout_editor_absoluteX="52dp"
-            tools:layout_editor_absoluteY="476dp" />
+            android:layout_marginTop="10dp">
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/ingrAmount1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:gravity="center"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/ingrSpinner1"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/ingrName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="ingredient" />
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/ingrAmount2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:gravity="center"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/ingrSpinner2"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/ingrName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="ingredient" />
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/ingrAmount3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:gravity="center"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/ingrSpinner3"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/ingrName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="ingredient" />
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/ingrAmount4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:gravity="center"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/ingrSpinner4"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/ingrName4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="ingredient" />
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/ingrAmount5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:gravity="center"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/ingrSpinner5"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/ingrName5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="ingredient" />
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/ingrAmount6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:gravity="center"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/ingrSpinner6"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/ingrName6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="ingredient" />
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/ingrAmount7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:gravity="center"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/ingrSpinner7"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/ingrName7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="ingredient" />
+            </TableRow>
+
+            <TableRow>
+                <EditText
+                    android:id="@+id/ingrAmount8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:gravity="center"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/ingrSpinner8"
+                    android:spinnerMode="dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/ingrName8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="ingredient" />
+            </TableRow>
+        </TableLayout>
 
         <TextView
             android:id="@+id/instructionsLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="INSTRUCTIONS"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/instrUnderline"
+            android:layout_width="200dp"
+            android:layout_height="3dp"
+            android:layout_gravity="center"
+            android:background="@color/black" />
+
+        <TableLayout
+            android:id="@+id/instrTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:stretchColumns="1" >
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/instrLabel1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:ems="3"
+                    android:inputType="number"
+                    android:text="1."
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/instr1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:hint="instruction"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/instrLabel2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:ems="3"
+                    android:inputType="number"
+                    android:text="2."
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/instr2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:hint="instruction"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/instrLabel3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:ems="3"
+                    android:inputType="number"
+                    android:text="3."
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/instr3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:hint="instruction"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/instrLabel4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:ems="3"
+                    android:inputType="number"
+                    android:text="4."
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/instr4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:hint="instruction"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/instrLabel5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:ems="3"
+                    android:inputType="number"
+                    android:text="5."
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/instr5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:hint="instruction"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/instrLabel6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:ems="3"
+                    android:inputType="number"
+                    android:text="6."
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/instr6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:hint="instruction"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/instrLabel7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:ems="3"
+                    android:inputType="number"
+                    android:text="7."
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/instr7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:hint="instruction"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/instrLabel8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:ems="3"
+                    android:inputType="number"
+                    android:text="8."
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/instr8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:hint="instruction"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="INSTRUCTIONS"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="536dp" />
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="ADD" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>
