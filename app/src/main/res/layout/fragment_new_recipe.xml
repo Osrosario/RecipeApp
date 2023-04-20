@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".NewRecipeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/stockImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/recipe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stockImage">
+
+        </EditText>
+
+        <TextView
+            android:id="@+id/prepTimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="Prep Time:"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/prepTimeLabel"
+            app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
+
+        <TextView
+            android:id="@+id/prepMinLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="min(s)"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/editTextNumber"
+            app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
+
+        <EditText
+            android:id="@+id/editTextNumber2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/cookTimeLabel"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+        <TextView
+            android:id="@+id/cookTimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Cook Time:"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/prepTimeLabel" />
+
+        <TextView
+            android:id="@+id/cookMinLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="min(s)"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
+            app:layout_constraintTop_toBottomOf="@+id/prepMinLabel" />
+
+        <TextView
+            android:id="@+id/totalTimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Total Time:"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cookTimeLabel" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="19dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/totalTimeLabel"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
+
+        <TextView
+            android:id="@+id/totalMinLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:text="min(s)"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/cookMinLabel" />
+
+        <TextView
+            android:id="@+id/ingrediantsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="INGREDIENTS"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/totalMinLabel" />
+
+        <TextView
+            android:id="@+id/instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Instructions"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ingrediantsLabel" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top"
+            tools:layout_editor_absoluteX="52dp"
+            tools:layout_editor_absoluteY="476dp" />
+
+        <TextView
+            android:id="@+id/instructionsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INSTRUCTIONS"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="536dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

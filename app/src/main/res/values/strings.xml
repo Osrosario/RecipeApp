@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">RecipeApp</string>
+    <string name="app_name">Recipe App</string>
+    <string name="api_key">f729c3707fmsh309903d877de6e7p1c7c7djsn0b68a17e6861</string>
+    <string name="api_host">spoonacular-recipe-food-nutrition-v1.p.rapidapi.com</string>
+    <string name="help_text">.....</string>
+    <string name="credits">App by Omar Rosario and Michael Ruocco</string>
 </resources>
