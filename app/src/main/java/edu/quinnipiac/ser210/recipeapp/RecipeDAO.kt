@@ -30,6 +30,6 @@ interface RecipeDAO
     @Update
     suspend fun updateInstruction(newList: ArrayList<String>)
 
-    @Query("SELECT * FROM recipeTable WHERE taskId = :recipeId")
+    @Query("SELECT * FROM recipeTable WHERE recipeId = :recipeId")
     fun get(recipeId: Long): LiveData<Recipe>
 }

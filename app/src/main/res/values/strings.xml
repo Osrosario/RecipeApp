@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">RecipeApp</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="measurement">
+        <item>""</item>
+        <item>tsp(s)</item>
+        <item>tbsp(s)</item>
+        <item>cup(s)</item>
+        <item>fl. oz.</item>
+        <item>pt.</item>
+        <item>qt.</item>
+        <item>gal</item>
+    </string-array>
 </resources>
