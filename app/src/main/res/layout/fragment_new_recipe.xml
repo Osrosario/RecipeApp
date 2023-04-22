@@ -1,592 +1,691 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
     tools:context=".NewRecipeFragment">
 
-    <LinearLayout
+    <data>
+        <variable
+            name="viewModel"
+            type="edu.quinnipiac.ser210.recipeapp.RecipeViewModel" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:fillViewport="true" >
 
-        <ImageView
-            android:id="@+id/recipeImage"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:src="@drawable/recipe" />
-
-        <EditText
-            android:id="@+id/nameEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:hint="Recipe Name" />
-
-        <TableLayout
-            android:id="@+id/infoTable"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
+            android:orientation="vertical">
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/prepTimeLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Prep Time:"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+            <ImageView
+                android:id="@+id/recipeImage"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@drawable/recipe" />
 
-                <EditText
-                    android:id="@+id/prepTimeEditText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:inputType="number"
-                    android:textColor="@color/black" />
+            <EditText
+                android:id="@+id/nameEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="@={viewModel.newRecipeName}"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:hint="Recipe Name" />
 
-                <TextView
-                    android:id="@+id/prepMinLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="min(s)"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-            </TableRow>
+            <TableLayout
+                android:id="@+id/infoTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" >
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/cookTimeLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cook Time:"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                <TableRow
+                    android:id="@+id/prepTime" >
 
-                <EditText
-                    android:id="@+id/cookTimeEditText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:inputType="number"
-                    android:textColor="@color/black" />
+                    <TextView
+                        android:id="@+id/prepTimeLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Prep Time:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/cookMinLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="min(s)"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/prepTimeEditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="3"
+                        android:inputType="number"
+                        android:text="@{viewModel.newPrepTime}"
+                        android:textColor="@color/black" />
 
-            <TableRow
-                android:id="@+id/spacer"
-                android:layout_margin="5dp" />
+                    <TextView
+                        android:id="@+id/prepMinLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="min(s)"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </TableRow>
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/totalTimeLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Total Time:"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                <TableRow
+                    android:id="@+id/cookTime" >
 
-                <TextView
-                    android:id="@+id/totalTimeEditText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:ems="3"
-                    android:text="0"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/cookTimeLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cook Time:"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/totalMinLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="min(s)"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/cookTimeEditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="3"
+                        android:inputType="number"
+                        android:text="@={viewModel.newCookTime}"
+                        android:textColor="@color/black" />
 
-        </TableLayout>
+                    <TextView
+                        android:id="@+id/cookMinLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="min(s)"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </TableRow>
 
-        <TextView
-            android:id="@+id/ingredientsLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="INGREDIENTS"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            </TableLayout>
 
-        <View
-            android:id="@+id/ingrUnderline"
-            android:layout_width="200dp"
-            android:layout_height="3dp"
-            android:layout_gravity="center"
-            android:background="@color/black" />
+            <TextView
+                android:id="@+id/ingredientsLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="INGREDIENTS"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <TableLayout
-            android:id="@+id/ingrTable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            <View
+                android:id="@+id/ingrUnderline"
+                android:layout_width="200dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center"
+                android:background="@color/black" />
 
-            <TableRow>
-                <EditText
-                    android:id="@+id/ingrAmount1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="number"
-                    android:textSize="18sp" />
+            <TableLayout
+                android:id="@+id/ingrTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
 
-                <Spinner
-                    android:id="@+id/ingrSpinner1"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp" />
+                <TableRow
+                    android:id="@+id/ingredient1" >
 
-                <EditText
-                    android:id="@+id/ingrName1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:hint="ingredient" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/amount1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="@={viewModel.newIngredients[0][0]}"
+                        android:textSize="18sp" />
 
-            <TableRow>
-                <EditText
-                    android:id="@+id/ingrAmount2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="number"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/unit1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="Unit"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[0][1]}"
+                        android:textSize="18sp" />
 
-                <Spinner
-                    android:id="@+id/ingrSpinner2"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/name1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:hint="Ingredient"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[0][2]}"
+                        android:textSize="18sp" />
+                </TableRow>
 
-                <EditText
-                    android:id="@+id/ingrName2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:hint="ingredient" />
-            </TableRow>
+                <TableRow
+                    android:id="@+id/ingredient2"
+                    android:layout_marginTop="10dp" >
 
-            <TableRow>
-                <EditText
-                    android:id="@+id/ingrAmount3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="number"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/amount2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="@={viewModel.newIngredients[1][0]}"
+                        android:textSize="18sp" />
 
-                <Spinner
-                    android:id="@+id/ingrSpinner3"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/unit2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="Unit"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[1][1]}"
+                        android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/ingrName3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:hint="ingredient" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/name2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:hint="Ingredient"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[1][2]}"
+                        android:textSize="18sp" />
+                </TableRow>
 
-            <TableRow>
-                <EditText
-                    android:id="@+id/ingrAmount4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="number"
-                    android:textSize="18sp" />
+                <TableRow
+                    android:id="@+id/ingredient3"
+                    android:layout_marginTop="10dp" >
 
-                <Spinner
-                    android:id="@+id/ingrSpinner4"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/amount3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="@={viewModel.newIngredients[2][0]}"
+                        android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/ingrName4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:hint="ingredient" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/unit3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="Unit"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[2][1]}"
+                        android:textSize="18sp" />
 
-            <TableRow>
-                <EditText
-                    android:id="@+id/ingrAmount5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="number"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/name3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:hint="Ingredient"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[2][2]}"
+                        android:textSize="18sp" />
+                </TableRow>
 
-                <Spinner
-                    android:id="@+id/ingrSpinner5"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp" />
+                <TableRow
+                    android:id="@+id/ingredient4"
+                    android:layout_marginTop="10dp" >
 
-                <EditText
-                    android:id="@+id/ingrName5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:hint="ingredient" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/amount4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="@={viewModel.newIngredients[3][0]}"
+                        android:textSize="18sp" />
 
-            <TableRow>
-                <EditText
-                    android:id="@+id/ingrAmount6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="number"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/unit4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="Unit"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[3][1]}"
+                        android:textSize="18sp" />
 
-                <Spinner
-                    android:id="@+id/ingrSpinner6"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/name4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:hint="Ingredient"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[3][2]}"
+                        android:textSize="18sp" />
+                </TableRow>
 
-                <EditText
-                    android:id="@+id/ingrName6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:hint="ingredient" />
-            </TableRow>
+                <TableRow
+                    android:id="@+id/ingredient5"
+                    android:layout_marginTop="10dp" >
 
-            <TableRow>
-                <EditText
-                    android:id="@+id/ingrAmount7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="number"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/amount5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="@={viewModel.newIngredients[4][0]}"
+                        android:textSize="18sp" />
 
-                <Spinner
-                    android:id="@+id/ingrSpinner7"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/unit5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="Unit"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[4][1]}"
+                        android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/ingrName7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:hint="ingredient" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/name5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:hint="Ingredient"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[4][2]}"
+                        android:textSize="18sp" />
+                </TableRow>
 
-            <TableRow>
-                <EditText
-                    android:id="@+id/ingrAmount8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="3"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="number"
-                    android:textSize="18sp" />
+                <TableRow
+                    android:id="@+id/ingredient6"
+                    android:layout_marginTop="10dp" >
 
-                <Spinner
-                    android:id="@+id/ingrSpinner8"
-                    android:spinnerMode="dropdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/amount6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="@={viewModel.newIngredients[5][0]}"
+                        android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/ingrName8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:hint="ingredient" />
-            </TableRow>
-        </TableLayout>
+                    <EditText
+                        android:id="@+id/unit6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="Unit"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[5][1]}"
+                        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/instructionsLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="INSTRUCTIONS"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+                    <EditText
+                        android:id="@+id/name6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:hint="Ingredient"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[5][2]}"
+                        android:textSize="18sp" />
+                </TableRow>
 
-        <View
-            android:id="@+id/instrUnderline"
-            android:layout_width="200dp"
-            android:layout_height="3dp"
-            android:layout_gravity="center"
-            android:background="@color/black" />
+                <TableRow
+                    android:id="@+id/ingredient7"
+                    android:layout_marginTop="10dp" >
 
-        <TableLayout
-            android:id="@+id/instrTable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:stretchColumns="1" >
+                    <EditText
+                        android:id="@+id/amount7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="@={viewModel.newIngredients[6][0]}"
+                        android:textSize="18sp" />
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/instrLabel1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:ems="3"
-                    android:inputType="number"
-                    android:text="1."
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/unit7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="Unit"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[6][1]}"
+                        android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/instr1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:hint="instruction"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/name7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:hint="Ingredient"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[6][2]}"
+                        android:textSize="18sp" />
+                </TableRow>
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/instrLabel2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:ems="3"
-                    android:inputType="number"
-                    android:text="2."
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                <TableRow
+                    android:id="@+id/ingredient8"
+                    android:layout_marginTop="10dp" >
 
-                <EditText
-                    android:id="@+id/instr2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:hint="instruction"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/amount8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="@={viewModel.newIngredients[7][0]}"
+                        android:textSize="18sp" />
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/instrLabel3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:ems="3"
-                    android:inputType="number"
-                    android:text="3."
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/unit8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:hint="Unit"
+                        android:inputType="text"
+                        android:text="@={viewModel.newIngredients[7][1]}"
+                        android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/instr3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:hint="instruction"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/name8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_weight="2"
+                        android:inputType="text"
+                        android:hint="Ingredient"
+                        android:text="@={viewModel.newIngredients[7][2]}"
+                        android:textSize="18sp" />
+                </TableRow>
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/instrLabel4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:ems="3"
-                    android:inputType="number"
-                    android:text="4."
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+            </TableLayout>
 
-                <EditText
-                    android:id="@+id/instr4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:hint="instruction"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </TableRow>
+            <TextView
+                android:id="@+id/instructionsLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="INSTRUCTIONS"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/instrLabel5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:ems="3"
-                    android:inputType="number"
-                    android:text="5."
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+            <View
+                android:id="@+id/instrUnderline"
+                android:layout_width="200dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center"
+                android:background="@color/black" />
 
-                <EditText
-                    android:id="@+id/instr5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:hint="instruction"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </TableRow>
+            <TableLayout
+                android:id="@+id/instrTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:stretchColumns="1" >
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/instrLabel6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:ems="3"
-                    android:inputType="number"
-                    android:text="6."
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                <TableRow
+                    android:id="@+id/instruction1" >
 
-                <EditText
-                    android:id="@+id/instr6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:hint="instruction"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/instrLabel1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:ems="3"
+                        android:inputType="number"
+                        android:text="1."
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/instrLabel7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:ems="3"
-                    android:inputType="number"
-                    android:text="7."
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    <EditText
+                        android:id="@+id/instr1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:hint="instruction"
+                        android:text="@={viewModel.newInstructions[0]}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </TableRow>
 
-                <EditText
-                    android:id="@+id/instr7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:hint="instruction"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </TableRow>
+                <TableRow
+                    android:id="@+id/instruction2" >
 
-            <TableRow>
-                <TextView
-                    android:id="@+id/instrLabel8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:ems="3"
-                    android:inputType="number"
-                    android:text="8."
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/instrLabel2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:ems="3"
+                        android:inputType="number"
+                        android:text="2."
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/instr8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:hint="instruction"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </TableRow>
+                    <EditText
+                        android:id="@+id/instr2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:hint="instruction"
+                        android:text="@={viewModel.newInstructions[1]}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </TableRow>
 
-        </TableLayout>
+                <TableRow
+                    android:id="@+id/instruction3" >
 
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="ADD" />
+                    <TextView
+                        android:id="@+id/instrLabel3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:ems="3"
+                        android:inputType="number"
+                        android:text="3."
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/instr3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:hint="instruction"
+                        android:text="@={viewModel.newInstructions[2]}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/instruction4" >
+
+                    <TextView
+                        android:id="@+id/instrLabel4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:ems="3"
+                        android:inputType="number"
+                        android:text="4."
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/instr4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:hint="instruction"
+                        android:text="@={viewModel.newInstructions[3]}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/instruction5" >
+
+                    <TextView
+                        android:id="@+id/instrLabel5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:ems="3"
+                        android:inputType="number"
+                        android:text="5."
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/instr5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:hint="instruction"
+                        android:text="@={viewModel.newInstructions[4]}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/instruction6" >
+
+                    <TextView
+                        android:id="@+id/instrLabel6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:ems="3"
+                        android:inputType="number"
+                        android:text="6."
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/instr6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:hint="instruction"
+                        android:text="@={viewModel.newInstructions[5]}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/instruction7" >
+
+                    <TextView
+                        android:id="@+id/instrLabel7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:ems="3"
+                        android:inputType="number"
+                        android:text="7."
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/instr7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:hint="instruction"
+                        android:text="@={viewModel.newInstructions[6]}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/instruction8" >
+                    <TextView
+                        android:id="@+id/instrLabel8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:ems="3"
+                        android:inputType="number"
+                        android:text="8."
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/instr8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:hint="instruction"
+                        android:text="@={viewModel.newInstructions[7]}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </TableRow>
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="ADD"
+                android:OnClick="@={() -> viewModel.addRecipe()}"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
 
 
-    </LinearLayout>
 
-</ScrollView>
