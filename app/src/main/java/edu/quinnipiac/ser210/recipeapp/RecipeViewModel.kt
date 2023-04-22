@@ -15,9 +15,6 @@ import kotlinx.coroutines.launch
 
 class RecipeViewModel(val dao: RecipeDAO) : ViewModel()
 {
-    private val unitList = arrayListOf("tsp(s)", "tbsp(s)", "cup(s)", "fl. oz.", "pt.", "qt.", "gal")
-    private var positionList = arrayListOf<Int>()
-
     var newRecipeName = ""
     var newImageUrl = ""
     var newPrepTime = ""
