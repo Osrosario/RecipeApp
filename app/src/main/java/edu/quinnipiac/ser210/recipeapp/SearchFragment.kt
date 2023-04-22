@@ -18,10 +18,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
+ * @title Make Meals
  * @author Michael Ruocco, Omar Rosario
- * @date 4/18/2023
+ * @date 5/X/2023
  *
- * Fragment class responsible for creating a recycler view. If a RecipeInterface does not exist,
+ * The SearchFragment class is responsible for creating a recycler view. If a RecipeInterface does not exist,
  * a error message will be displayed, otherwise, creates an RecipeInterface object and extracts a list
  * of recipes and sends it to the RecipeAdapter.kt to display information.
  */

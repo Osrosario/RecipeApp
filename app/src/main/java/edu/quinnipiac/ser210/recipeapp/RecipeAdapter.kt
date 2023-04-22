@@ -16,13 +16,14 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.MaterialToolbar
 
 /**
+ * @title Make Meals
  * @author Michael Ruocco, Omar Rosario
- * @date 4/18/2023
+ * @date 5/X/2023
  *
- * A Kotlin class responsible for displaying the title and image of a recipe obtained from the
- * SearchFragment class. Utilizes the "recipe_info_item.xml" and recycle view to organize views. If a material
- * card is pressed, it will get the id of that recipe and navigate to a
- * fragment that displays details of the recipe based upon that id.
+ * The RecipeAdapter class displays the title and image of a recipe obtained from theSearchFragment class.
+ * Utilizes the "recipe_info_item.xml" and recycle view to organize views. If a material card is pressed,
+ * it will get the id of that recipe and navigate to a fragment that displays details of the recipe based
+ * upon that id.
  */
 
 var recipeList : ArrayList<RecipeInfo> = ArrayList()

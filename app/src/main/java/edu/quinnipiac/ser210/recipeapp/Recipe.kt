@@ -1,9 +1,17 @@
 package edu.quinnipiac.ser210.recipeapp
 
-
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+
+/**
+ * @title Make Meals
+ * @author Michael Ruocco, Omar Rosario
+ * @date 5/X/2023
+ *
+ * The Recipe Data class creates a database consisting of a table with each column initializing a default variable by
+ * name and type. This data class is used to create and store the data of a recipe.
+ */
 
 @Entity(tableName = "recipeTable")
 data class Recipe (
@@ -26,8 +34,8 @@ data class Recipe (
     var totalTime: String = "",
 
     @ColumnInfo(name = "ingredients")
-    var ingredients: ArrayList<String> = ArrayList<String>(),
+    var ingredients: ArrayList<ArrayList<String>> = Array(8) { ArrayList<String>(3) }.toCollection(ArrayList()),
 
     @ColumnInfo(name = "instructions")
-    var instructions: ArrayList<String> = ArrayList<String>()
+    var instructions: ArrayList<String> = ArrayList<String>(8)
 )

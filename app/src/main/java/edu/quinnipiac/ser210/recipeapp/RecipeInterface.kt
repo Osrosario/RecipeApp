@@ -5,6 +5,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
+/**
+ * @title Make Meals
+ * @author Michael Ruocco, Omar Rosario
+ * @date 5/X/2023
+ *
+ * The RecipeInterface class establishes the connection to the API service.
+ */
+
 interface RecipeInterface
 {
     @Headers(

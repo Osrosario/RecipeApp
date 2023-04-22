@@ -26,7 +26,7 @@ import com.google.android.material.textview.MaterialTextView
  * @author Michael Ruocco, Omar Rosario
  * @date 4/18/2023
  *
- * MainActivity class that sets the functionalities throughout the entire application.
+ * The MainActivity class that sets the functionalities throughout the entire application.
  */
 
 class MainActivity : AppCompatActivity()
