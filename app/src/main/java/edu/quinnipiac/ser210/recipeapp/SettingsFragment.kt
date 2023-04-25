@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class AboutFragment : Fragment()
+class SettingsFragment : Fragment()
 {
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -15,6 +15,6 @@ class AboutFragment : Fragment()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
-        return inflater.inflate(R.layout.fragment_about, container, false)
+        return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 }
