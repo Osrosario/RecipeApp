@@ -1,17 +1,18 @@
 <resources>
     <string name="app_name">RecipeApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="api_key">f729c3707fmsh309903d877de6e7p1c7c7djsn0b68a17e6861</string>
-    <string name="api_host">spoonacular-recipe-food-nutrition-v1.p.rapidapi.com</string>
-    <string name="help_text">.....</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- API String Data. Used in RecipeInterface class -->
+    <string name="apiKey">f729c3707fmsh309903d877de6e7p1c7c7djsn0b68a17e6861</string>
+    <string name="apiHost">spoonacular-recipe-food-nutrition-v1.p.rapidapi.com</string>
+    <!-- Bullet character for lists -->
+    <string name="bullet">\u2022</string>
+    <!-- Used in AboutFragment -->
+    <string name="appDesc">This application was created to fulfill an assignment for our Software Engineering Design and Development course. After learning the Kotlin programming language and the functionalities of Android Studio, the students were required to apply their knowledge and develop an application of their choice.</string>
+    <string name="whatDesc">A recipe application called <i>Make Meals</i>. <i>Make Meals</i> allows it\'s users to save, edit, search, and share recipes.</string>
     <string name="credits">App by Omar Rosario and Michael Ruocco</string>
-    <string-array name="unit">
-        <item>tsp(s)</item>
-        <item>tbsp(s)</item>
-        <item>cup(s)</item>
-        <item>fl. oz.</item>
-        <item>pt.</item>
-        <item>qt.</item>
-        <item>gal</item>
-    </string-array>
+    <string name="feature1">Save and edit their prep and cook times, ingredients, and instructions</string>
+    <string name="feature2">Search recipes by description of the kind meal they want</string>
+    <string name="feature3">Change the application\'s theme to dark mode</string>
+    <string name="developers"><i>Make Meals</i> was developed by Michael Ruocco and Omar Rosario</string>
+    <string name="disclosure"><i>This application is not intended for commercial use</i></string>
 </resources>

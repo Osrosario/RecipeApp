@@ -21,6 +21,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textview.MaterialTextView
+import edu.quinnipiac.ser210.recipeapp.databinding.ActivityMainBinding
 
 /**
  * @author Michael Ruocco, Omar Rosario
@@ -31,17 +32,19 @@ import com.google.android.material.textview.MaterialTextView
 
 class MainActivity : AppCompatActivity()
 {
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var searchItem: MenuItem
     
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        /**
-         * Finds the Navigation Controller and sets the toolbar to navigate between fragments.
-         **/
-        val materialToolbar = findViewById<MaterialToolbar>(R.id.materialToolbar)
+        /** Finds the Navigation Controller and sets the toolbar to navigate between fragments. */
+        val materialToolbar = binding.materialToolbar
         setSupportActionBar(materialToolbar)
         val navController = findNavController(R.id.nav_host_fragment)
         findViewById<Toolbar>(R.id.materialToolbar).setupWithNavController(navController)
