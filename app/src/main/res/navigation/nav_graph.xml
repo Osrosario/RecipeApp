@@ -26,4 +26,9 @@
         android:name="edu.quinnipiac.ser210.recipeapp.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="edu.quinnipiac.ser210.recipeapp.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

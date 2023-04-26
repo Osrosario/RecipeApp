@@ -23,23 +23,11 @@ interface RecipeDAO
     suspend fun insertRecipe(recipe: Recipe)
 
     @Update
-    suspend fun updateTitle(newTitle: String)
-
-    @Update
-    suspend fun updatePrepTime(newTime: String)
-
-    @Update
-    suspend fun updateCookTime(newTime: String)
-
-    @Update
-    suspend fun updateTotalTime(newTime:String)
-
-    @Update
-    suspend fun updateIngredients(newList: ArrayList<ArrayList<String>>)
-
-    @Update
-    suspend fun updateInstruction(newList: ArrayList<String>)
+    suspend fun updateRecipe(recipe: Recipe)
 
     @Query("SELECT * FROM recipeTable WHERE recipeId = :recipeId")
     fun get(recipeId: Long): LiveData<Recipe>
+
+    @Query("SELECT * FROM recipeTable ORDER BY recipeId DESC")
+    fun getAll(): LiveData<List<Recipe>>
 }

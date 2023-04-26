@@ -17,6 +17,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
@@ -43,13 +46,28 @@ class MainActivity : AppCompatActivity()
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /** Finds the Navigation Controller and sets the toolbar to navigate between fragments. */
+        /** Finds the Material Toolbar and sets the toolbar to be app's default toolbar. */
         val materialToolbar = binding.materialToolbar
         setSupportActionBar(materialToolbar)
-        val navController = findNavController(R.id.nav_host_fragment)
-        findViewById<Toolbar>(R.id.materialToolbar).setupWithNavController(navController)
+
+        /**
+         * Finds the Navigation Controller and sets the toolbar to navigate to the previous
+         * fragment and drawer to navigate between fragments.
+         */
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        val drawer = binding.drawerLayout
+        val builder = AppBarConfiguration.Builder(navController.graph)
+        builder.setOpenableLayout(drawer)
+        val appBarConfiguration = builder.build()
+        materialToolbar.setupWithNavController(navController, appBarConfiguration)
+
+        /** Enable navigation when an item is clicked */
+        val navView = binding.navView
+        NavigationUI.setupWithNavController(navView, navController)
     }
 
+    /** Inflate any menu items to the toolbar. */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
 
@@ -84,7 +102,7 @@ class MainActivity : AppCompatActivity()
         return true
     }
 
-
+    /** Navigates to a destination when an item is clicked. */
     override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
         when (item.itemId)
@@ -99,9 +117,7 @@ class MainActivity : AppCompatActivity()
                 return true
             }
 
-            /**
-             * Changes the theme of the app to dark mode when the "Eye" icon is pressed.
-             **/
+            /** Changes the theme of the app to dark mode when the "Eye" icon is pressed. */
             R.id.displayMode -> {
                 val nightModeFlags = when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
                     Configuration.UI_MODE_NIGHT_YES -> AppCompatDelegate.MODE_NIGHT_NO
@@ -114,23 +130,7 @@ class MainActivity : AppCompatActivity()
                 return true
             }
 
-            /**
-             * Displays a pop-up describing how to use the app when the "?" is pressed.
-             **/
-            R.id.helpPopup -> {
-                val popupView = layoutInflater.inflate(R.layout.popup_help, null)
-                val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, true)
-                popupWindow.showAtLocation(findViewById(R.id.materialToolbar), Gravity.CENTER, 0, 0)
-
-                popupView.setOnTouchListener { _, _ ->
-                    popupWindow.dismiss()
-                    true
-                }
-            }
-
-            /**
-             * Enables the user to copy the article's source link to share or search on a browser.
-             **/
+            /** Enables the user to copy the article's source link to share or search on a browser. */
             R.id.shareLink -> {
                 val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 

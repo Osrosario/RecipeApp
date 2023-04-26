@@ -16,6 +16,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //Support for more icons
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildFeatures {
@@ -64,6 +67,9 @@ dependencies {
     implementation "androidx.room:room-runtime:2.5.1"
     implementation "androidx.room:room-ktx:2.5.1"
     kapt "androidx.room:room-compiler:2.5.1"
+
+    //Icons
+    //implementation "com.androidx.support:appcompat-v7:28.0.0"
 
     implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

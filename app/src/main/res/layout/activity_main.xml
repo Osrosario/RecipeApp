@@ -7,38 +7,50 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar" >
+        android:layout_height="match_parent" >
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/materialToolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            app:layout_scrollFlags="scroll|enterAlways" >
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar" >
 
-        </com.google.android.material.appbar.MaterialToolbar>
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/materialToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                app:layout_scrollFlags="scroll|enterAlways" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
-
-        <fragment
-            android:id="@+id/nav_host_fragment"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            app:navGraph="@navigation/nav_graph"
-            tools:context=".MainActivity"
-            app:defaultNavHost="true" >
-        </fragment>
+            android:layout_margin="8dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
-    </androidx.core.widget.NestedScrollView>
+            <fragment
+                android:id="@+id/nav_host_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:navGraph="@navigation/nav_graph"
+                tools:context=".MainActivity"
+                app:defaultNavHost="true" />
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/menu_main" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
