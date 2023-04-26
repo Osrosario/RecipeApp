@@ -22,6 +22,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textview.MaterialTextView
 
+
 /**
  * @author Michael Ruocco, Omar Rosario
  * @date 4/18/2023
@@ -97,43 +98,13 @@ class MainActivity : AppCompatActivity()
             }
 
             /**
-             * Changes the theme of the app to dark mode when the "Eye" icon is pressed.
-             **/
-            R.id.displayMode -> {
-                val nightModeFlags = when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-                    Configuration.UI_MODE_NIGHT_YES -> AppCompatDelegate.MODE_NIGHT_NO
-                    Configuration.UI_MODE_NIGHT_NO -> AppCompatDelegate.MODE_NIGHT_YES
-                    else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-                }
-                AppCompatDelegate.setDefaultNightMode(nightModeFlags)
-                recreate()
-
-                return true
-            }
-
-            /**
-             * Displays a pop-up describing how to use the app when the "?" is pressed.
-             **/
-            R.id.helpPopup -> {
-                val popupView = layoutInflater.inflate(R.layout.popup_help, null)
-                val popupWindow = PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, true)
-                popupWindow.showAtLocation(findViewById(R.id.materialToolbar), Gravity.CENTER, 0, 0)
-
-                popupView.setOnTouchListener { _, _ ->
-                    popupWindow.dismiss()
-                    true
-                }
-            }
-
-            /**
              * Enables the user to copy the article's source link to share or search on a browser.
              **/
-            R.id.shareLink -> {
-                val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            R.id.add -> {
 
                 val snackbar = Snackbar.make(
                     findViewById(android.R.id.content),
-                    "Link copied",
+                    "Recipe added",
                     Snackbar.LENGTH_SHORT
                 )
 

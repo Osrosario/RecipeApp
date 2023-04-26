@@ -19,8 +19,8 @@ class RecipeViewModel(val dao: RecipeDAO) : ViewModel()
     var newImageUrl = ""
     var newPrepTime = ""
     var newCookTime = ""
-    var newIngredients = Array(8) { ArrayList<String>(3) }.toCollection(ArrayList())
-    var newInstructions = ArrayList<String>()
+    var newIngredients = ""
+    var newInstructions = ""
 
     fun addRecipe()
     {

@@ -9,8 +9,8 @@ package edu.quinnipiac.ser210.recipeapp
  */
 
 data class RecipeInfo (
-    val id: Int?,
     val title: String?,
-    val image: String?,
-    val readyInMinutes: Int?
+    val ingredients: String?,
+    val servings: String?,
+    val instructions: String?
 )

@@ -143,7 +143,7 @@
                         android:gravity="center"
                         android:hint="0"
                         android:inputType="number"
-                        android:text="@={viewModel.newIngredients[0][0]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -154,7 +154,7 @@
                         android:gravity="center"
                         android:hint="Unit"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[0][1]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -165,7 +165,7 @@
                         android:gravity="center"
                         android:hint="Ingredient"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[0][2]}"
+                        android:text=""
                         android:textSize="18sp" />
                 </TableRow>
 
@@ -181,7 +181,7 @@
                         android:gravity="center"
                         android:hint="0"
                         android:inputType="number"
-                        android:text="@={viewModel.newIngredients[1][0]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -192,7 +192,7 @@
                         android:gravity="center"
                         android:hint="Unit"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[1][1]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -203,7 +203,7 @@
                         android:gravity="center"
                         android:hint="Ingredient"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[1][2]}"
+                        android:text=""
                         android:textSize="18sp" />
                 </TableRow>
 
@@ -219,7 +219,7 @@
                         android:gravity="center"
                         android:hint="0"
                         android:inputType="number"
-                        android:text="@={viewModel.newIngredients[2][0]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -230,7 +230,7 @@
                         android:gravity="center"
                         android:hint="Unit"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[2][1]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -241,7 +241,7 @@
                         android:gravity="center"
                         android:hint="Ingredient"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[2][2]}"
+                        android:text=""
                         android:textSize="18sp" />
                 </TableRow>
 
@@ -257,7 +257,7 @@
                         android:gravity="center"
                         android:hint="0"
                         android:inputType="number"
-                        android:text="@={viewModel.newIngredients[3][0]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -268,7 +268,7 @@
                         android:gravity="center"
                         android:hint="Unit"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[3][1]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -279,7 +279,7 @@
                         android:gravity="center"
                         android:hint="Ingredient"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[3][2]}"
+                        android:text=""
                         android:textSize="18sp" />
                 </TableRow>
 
@@ -295,7 +295,7 @@
                         android:gravity="center"
                         android:hint="0"
                         android:inputType="number"
-                        android:text="@={viewModel.newIngredients[4][0]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -306,7 +306,7 @@
                         android:gravity="center"
                         android:hint="Unit"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[4][1]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -317,7 +317,7 @@
                         android:gravity="center"
                         android:hint="Ingredient"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[4][2]}"
+                        android:text=""
                         android:textSize="18sp" />
                 </TableRow>
 
@@ -333,7 +333,7 @@
                         android:gravity="center"
                         android:hint="0"
                         android:inputType="number"
-                        android:text="@={viewModel.newIngredients[5][0]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -344,7 +344,7 @@
                         android:gravity="center"
                         android:hint="Unit"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[5][1]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -355,7 +355,7 @@
                         android:gravity="center"
                         android:hint="Ingredient"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[5][2]}"
+                        android:text=""
                         android:textSize="18sp" />
                 </TableRow>
 
@@ -371,7 +371,7 @@
                         android:gravity="center"
                         android:hint="0"
                         android:inputType="number"
-                        android:text="@={viewModel.newIngredients[6][0]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -382,7 +382,7 @@
                         android:gravity="center"
                         android:hint="Unit"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[6][1]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -393,7 +393,7 @@
                         android:gravity="center"
                         android:hint="Ingredient"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[6][2]}"
+                        android:text=""
                         android:textSize="18sp" />
                 </TableRow>
 
@@ -409,7 +409,7 @@
                         android:layout_weight="1"
                         android:hint="0"
                         android:inputType="number"
-                        android:text="@={viewModel.newIngredients[7][0]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -420,7 +420,7 @@
                         android:layout_weight="1"
                         android:hint="Unit"
                         android:inputType="text"
-                        android:text="@={viewModel.newIngredients[7][1]}"
+                        android:text=""
                         android:textSize="18sp" />
 
                     <EditText
@@ -431,7 +431,7 @@
                         android:layout_weight="2"
                         android:inputType="text"
                         android:hint="Ingredient"
-                        android:text="@={viewModel.newIngredients[7][2]}"
+                        android:text=""
                         android:textSize="18sp" />
                 </TableRow>
 
@@ -484,7 +484,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructions[0]}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -510,7 +510,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructions[1]}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -536,7 +536,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructions[2]}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -562,7 +562,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructions[3]}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -588,7 +588,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructions[4]}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -614,7 +614,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructions[5]}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -640,7 +640,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructions[6]}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -665,7 +665,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructions[7]}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -678,8 +678,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="ADD"
-                android:OnClick="@={() -> viewModel.addRecipe()}"/>
+                android:text="ADD" />
 
         </LinearLayout>
 

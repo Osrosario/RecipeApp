@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to Video Game News"
+        android:text="Help"
         android:textStyle="bold"
         android:textSize="26sp"/>
 

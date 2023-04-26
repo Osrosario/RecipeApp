@@ -17,21 +17,18 @@ interface RecipeInterface
 {
     @Headers(
         "x-rapidapi-key: f729c3707fmsh309903d877de6e7p1c7c7djsn0b68a17e6861",
-        "x-rapidapi-host: spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+        "x-rapidapi-host: recipe-by-api-ninjas.p.rapidapi.com"
     )
 
-    @GET("recipes/complexSearch")
-    fun searchRecipes(@Query("query") query: String): Call<SearchResult?>?
-
-    @GET("recipes/{id}/information")
-    fun getRecipeDetails(@Path("id") id: String?,): Call<Recipe?>?
+    @GET("/v1/recipe")
+    fun searchRecipes(@Query("query") query: String): Call<ArrayList<RecipeInfo?>?>?
 
     companion object
     {
         fun create(): RecipeInterface
         {
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/")
+                .baseUrl("https://recipe-by-api-ninjas.p.rapidapi.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
