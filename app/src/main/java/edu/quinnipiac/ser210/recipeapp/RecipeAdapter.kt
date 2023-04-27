@@ -48,19 +48,22 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
         notifyDataSetChanged()
     }
 
-    override fun onViewRecycled(holder: MyViewHolder) {
+    override fun onViewRecycled(holder: MyViewHolder) 
+    {
         super.onViewRecycled(holder)
         holder.itemView.setOnClickListener(null)
         recipeList.clear()
     }
 
-    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) 
+    {
         super.onDetachedFromRecyclerView(recyclerView)
         recipeList.clear()
         notifyDataSetChanged()
     }
 
-    fun removeRecipeListItems() {
+    fun removeRecipeListItems() 
+    {
         recipeList.clear()
         notifyDataSetChanged()
     }
@@ -75,7 +78,7 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
             itemView.setOnClickListener {
 
                 val activity = itemView.context as AppCompatActivity
-                val toolbar = activity.findViewById<MaterialToolbar>(R.id.materialToolbar)
+                val toolbar = activity.findViewById<MaterialToolbar>(R.id.toolBar)
                 val menuAdd = toolbar.menu.findItem(R.id.add)
                 val menuSearch = toolbar.menu.findItem(R.id.searchRecipe)
                 menuSearch.collapseActionView()
@@ -88,9 +91,9 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
                     putString("ingredients", recipeList.get(pos).ingredients)
                     putString("instructions", recipeList.get(pos).instructions)
                 }
+
                 val action = SearchFragmentDirections.actionSearchFragmentToRecipeFragment(bundle)
                 navController.navigate(action)
-
             }
         }
 
@@ -100,10 +103,6 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
             title
             val currRecipe = recipeList.get(position)
             title.text = currRecipe.title
-
         }
-
     }
-
-
 }
