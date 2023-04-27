@@ -65,10 +65,11 @@ class MainActivity : AppCompatActivity()
     }
 
     /** Inflate any menu items to the toolbar. */
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean 
+    {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
 
-        // Find the search item in the menu and assign it to the searchItem property
+        /** Find the search item in the menu and assign it to the searchItem property */
         searchItem = menu.findItem(R.id.searchRecipe)
         val searchView = searchItem?.actionView as SearchView
 
