@@ -24,4 +24,5 @@ interface RecipeDAO
 
     @Query("SELECT * FROM recipeTable WHERE recipeId = :recipeId")
     fun get(recipeId: Long): LiveData<Recipe>
+
 }

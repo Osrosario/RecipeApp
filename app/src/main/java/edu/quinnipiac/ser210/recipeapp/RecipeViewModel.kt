@@ -29,9 +29,6 @@ class RecipeViewModel(val dao: RecipeDAO) : ViewModel()
 
             recipe.recipeTitle = newRecipeName
             recipe.imageUrl = newImageUrl
-            recipe.prepTime = newPrepTime
-            recipe.cookTime = newCookTime
-            recipe.totalTime = { newPrepTime.toInt() + newCookTime.toInt() }.toString()
             recipe.ingredients = newIngredients
             recipe.instructions = newInstructions
 

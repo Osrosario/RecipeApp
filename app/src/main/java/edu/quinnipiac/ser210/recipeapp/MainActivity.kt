@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity()
         setSupportActionBar(materialToolbar)
         val navController = findNavController(R.id.nav_host_fragment)
         findViewById<Toolbar>(R.id.materialToolbar).setupWithNavController(navController)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

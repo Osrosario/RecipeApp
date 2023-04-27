@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.GridLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.appbar.MaterialToolbar
 import edu.quinnipiac.ser210.recipeapp.databinding.FragmentRecipeBinding
 
 /**
@@ -73,6 +75,13 @@ class RecipeFragment : Fragment()
             }
             instructionsLayout.addView(textView)
         }
+
+        view.setOnClickListener {
+            val activity = view.context as AppCompatActivity
+            val toolbar = activity.findViewById<MaterialToolbar>(edu.quinnipiac.ser210.recipeapp.R.id.materialToolbar)
+            val menuAdd = toolbar.menu.findItem(edu.quinnipiac.ser210.recipeapp.R.id.add)
+        }
+
     }
 
 
