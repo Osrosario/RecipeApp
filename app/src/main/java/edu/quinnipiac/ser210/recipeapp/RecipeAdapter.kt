@@ -78,7 +78,7 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
             itemView.setOnClickListener {
 
                 val activity = itemView.context as AppCompatActivity
-                val toolbar = activity.findViewById<MaterialToolbar>(R.id.materialToolbar)
+                val toolbar = activity.findViewById<MaterialToolbar>(R.id.toolBar)
                 val menuAdd = toolbar.menu.findItem(R.id.add)
                 val menuSearch = toolbar.menu.findItem(R.id.searchRecipe)
                 menuSearch.collapseActionView()
