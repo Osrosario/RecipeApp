@@ -50,34 +50,36 @@ class SearchFragment : Fragment()
         recyclerView.adapter = recyclerAdapter
 
         view.setBackgroundColor(Color.WHITE)
-        searchRecipes()
-    }
 
-    private fun searchRecipes()
-    {
         val apiInterface = RecipeInterface.create().searchRecipes(searchTerm)
 
-        view?.clearFocus()
-
-        apiInterface?.enqueue(object : Callback<SearchResult?>
+        if (apiInterface != null)
         {
-            override fun onResponse(call: Call<SearchResult?>, response: Response<SearchResult?>)
-            {
-                if (response.body() != null)
-                {
-                    recyclerAdapter.clearItems()
-                    recyclerAdapter.setRecipeListItems(response.body()!! as SearchResult)
+            apiInterface?.enqueue(object : Callback<ArrayList<RecipeInfo?>?> {
+                override fun onResponse(
+                    call: Call<ArrayList<RecipeInfo?>?>,
+                    response: Response<ArrayList<RecipeInfo?>?>
+                ) {
+                    if (response.body() != null) {
+                        recyclerAdapter.setRecipeListItems(response.body()!! as ArrayList<RecipeInfo>)
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<SearchResult?>, t: Throwable)
-            {
-                if (t != null)
-                {
-                    t.message?.let { Log.d("onFailure", it) }
+                override fun onFailure(call: Call<ArrayList<RecipeInfo?>?>, t: Throwable) {
+                    if (t != null) {
+                        t.message?.let { Log.d("onFailure", it) }
+                    }
                 }
-            }
-        })
+            })
+        }
     }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        recyclerAdapter.removeRecipeListItems()
+        recyclerView.adapter = recyclerAdapter
+    }
+
+
+
 }
 

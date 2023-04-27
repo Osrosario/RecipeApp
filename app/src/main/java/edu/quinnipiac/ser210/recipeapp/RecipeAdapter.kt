@@ -1,18 +1,14 @@
 package edu.quinnipiac.ser210.recipeapp
 
 import android.content.Context
-import android.util.Log
-
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.MaterialToolbar
 
 /**
@@ -46,52 +42,68 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
         holder.bind(position)
     }
 
-    fun setRecipeListItems(recipeListparam: SearchResult)
+    fun setRecipeListItems(recipeListparam: ArrayList<RecipeInfo>)
     {
-        recipeList.clear()
-        recipeList.addAll(recipeListparam.results)
+        recipeList = recipeListparam
         notifyDataSetChanged()
+    }
 
-        Log.d("RecipeAdapter", "setRecipeListItems() called with ${recipeListparam.results.size} items")
+    override fun onViewRecycled(holder: MyViewHolder) {
+        super.onViewRecycled(holder)
+        holder.itemView.setOnClickListener(null)
+        recipeList.clear()
+    }
+
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView)
+        recipeList.clear()
+        notifyDataSetChanged()
+    }
+
+    fun removeRecipeListItems() {
+        recipeList.clear()
+        notifyDataSetChanged()
     }
 
     inner class MyViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView)
     {
         private val title: TextView = itemView!!.findViewById(R.id.item_title)
-        private val image: ImageView = itemView!!.findViewById(R.id.item_image)
         private var pos:Int = 0
 
         init
         {
             itemView.setOnClickListener {
 
-                val action = SearchFragmentDirections.actionSearchFragmentToNewRecipeFragment(pos)
-                navController.navigate(action)
-                recipeList.clear()
-
                 val activity = itemView.context as AppCompatActivity
-                val toolbar = activity.findViewById<MaterialToolbar>(R.id.toolBar)
+                val toolbar = activity.findViewById<MaterialToolbar>(R.id.materialToolbar)
+                val menuAdd = toolbar.menu.findItem(R.id.add)
                 val menuSearch = toolbar.menu.findItem(R.id.searchRecipe)
                 menuSearch.collapseActionView()
                 menuSearch.isVisible = !menuSearch.isVisible
+                menuAdd.isVisible = !menuAdd.isVisible
+
+                val bundle = Bundle().apply {
+                    putString("title", recipeList.get(pos).title)
+                    putString("servings", recipeList.get(pos).servings)
+                    putString("ingredients", recipeList.get(pos).ingredients)
+                    putString("instructions", recipeList.get(pos).instructions)
+                }
+                val action = SearchFragmentDirections.actionSearchFragmentToRecipeFragment(bundle)
+                navController.navigate(action)
+
             }
         }
 
         fun bind(position: Int)
         {
             pos = position
+            title
             val currRecipe = recipeList.get(position)
             title.text = currRecipe.title
 
-            Glide.with(context).load(currRecipe.image)
-                .apply(RequestOptions().centerCrop())
-                .into(image)
         }
+
     }
 
-    fun clearItems()
-    {
-        recipeList.clear()
-        notifyDataSetChanged()
-    }
+
 }
