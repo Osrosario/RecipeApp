@@ -22,6 +22,12 @@ interface RecipeDAO
     @Insert
     suspend fun insertRecipe(recipe: Recipe)
 
+    @Update
+    suspend fun updateRecipe(recipe: Recipe)
+
     @Query("SELECT * FROM recipeTable WHERE recipeId = :recipeId")
     fun get(recipeId: Long): LiveData<Recipe>
+
+    @Query("SELECT * FROM recipeTable ORDER BY recipeId DESC")
+    fun getAll(): LiveData<List<Recipe>>
 }
