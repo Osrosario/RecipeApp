@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RecipeApp</string>
+    <string name="app_name">Make Meals</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- API String Data. Used in RecipeInterface class -->
     <string name="apiKey">f729c3707fmsh309903d877de6e7p1c7c7djsn0b68a17e6861</string>
@@ -13,6 +13,6 @@
     <string name="feature1">Save and edit their prep and cook times, ingredients, and instructions</string>
     <string name="feature2">Search recipes by description of the kind meal they want</string>
     <string name="feature3">Change the application\'s theme to dark mode</string>
-    <string name="developers"><i>Make Meals</i> was developed by Michael Ruocco and Omar Rosario</string>
+    <string name="developers">Developed by:\nMichael Ruocco and Omar Rosario</string>
     <string name="disclosure"><i>This application is not intended for commercial use</i></string>
 </resources>

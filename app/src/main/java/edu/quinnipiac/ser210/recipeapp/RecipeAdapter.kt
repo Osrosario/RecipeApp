@@ -70,13 +70,10 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
                 recipeList.clear()
 
                 val activity = itemView.context as AppCompatActivity
-                val toolbar = activity.findViewById<MaterialToolbar>(R.id.materialToolbar)
-                val menuShare = toolbar.menu.findItem(R.id.shareLink)
+                val toolbar = activity.findViewById<MaterialToolbar>(R.id.toolBar)
                 val menuSearch = toolbar.menu.findItem(R.id.searchRecipe)
                 menuSearch.collapseActionView()
                 menuSearch.isVisible = !menuSearch.isVisible
-                menuShare.isVisible = !menuShare.isVisible
-
             }
         }
 

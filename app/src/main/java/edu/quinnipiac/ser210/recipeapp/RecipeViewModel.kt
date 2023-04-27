@@ -1,5 +1,8 @@
 package edu.quinnipiac.ser210.recipeapp
 
+import android.view.View
+import android.widget.RadioButton
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -26,7 +29,7 @@ class RecipeViewModel(val dao: RecipeDAO) : ViewModel()
     fun addIngredient(ingredient: String) = newIngredientList.add(ingredient)
     fun addInstruction(instruction: String) = newInstructionList.add(instruction)
 
-    fun addRecipe()
+    fun addRecipe(): Unit
     {
         viewModelScope.launch {
             /** Create a new recipe from the Recipe. */

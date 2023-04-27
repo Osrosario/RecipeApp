@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".AboutFragment" >
 
@@ -41,7 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/whatDesc"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/featuresLabel"
@@ -72,12 +73,13 @@
 
             <TextView
                 android:id="@+id/desc1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:layout_gravity="start"
+                android:layout_marginStart="5dp"
                 android:text="@string/feature1"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="14sp" />
         </TableRow>
 
         <TableRow
@@ -95,10 +97,11 @@
                 android:id="@+id/desc2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:layout_gravity="start|center"
+                android:layout_marginStart="5dp"
                 android:text="@string/feature2"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="14sp" />
         </TableRow>
 
         <TableRow
@@ -116,33 +119,38 @@
                 android:id="@+id/desc3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:layout_gravity="start|center"
+                android:layout_marginStart="5dp"
                 android:text="@string/feature3"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="14sp" />
         </TableRow>
-
-
-
     </TableLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+    </View>
 
     <TextView
         android:id="@+id/developers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
+        android:layout_marginBottom="5dp"
         android:gravity="center"
         android:text="@string/developers"
         android:textColor="@color/black"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/disclosure"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
         android:gravity="center"
         android:text="@string/disclosure"
         android:textColor="@color/black"
-        android:textSize="10sp" />
+        android:textSize="12sp" />
 
 </LinearLayout>

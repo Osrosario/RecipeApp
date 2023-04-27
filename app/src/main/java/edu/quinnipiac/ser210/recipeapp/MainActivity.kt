@@ -11,9 +11,6 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.LinearLayout
-import android.widget.PopupWindow
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
@@ -46,9 +43,9 @@ class MainActivity : AppCompatActivity()
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /** Finds the Material Toolbar and sets the toolbar to be app's default toolbar. */
-        val materialToolbar = binding.materialToolbar
-        setSupportActionBar(materialToolbar)
+        /** Finds the toolbar and sets the toolbar to be app's default toolbar. */
+        val toolbar = binding.toolBar
+        setSupportActionBar(toolbar)
 
         /**
          * Finds the Navigation Controller and sets the toolbar to navigate to the previous
@@ -60,7 +57,7 @@ class MainActivity : AppCompatActivity()
         val builder = AppBarConfiguration.Builder(navController.graph)
         builder.setOpenableLayout(drawer)
         val appBarConfiguration = builder.build()
-        materialToolbar.setupWithNavController(navController, appBarConfiguration)
+        toolbar.setupWithNavController(navController, appBarConfiguration)
 
         /** Enable navigation when an item is clicked */
         val navView = binding.navView
@@ -114,34 +111,6 @@ class MainActivity : AppCompatActivity()
                 } else {
                     searchItem.expandActionView()
                 }
-                return true
-            }
-
-            /** Changes the theme of the app to dark mode when the "Eye" icon is pressed. */
-            R.id.displayMode -> {
-                val nightModeFlags = when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-                    Configuration.UI_MODE_NIGHT_YES -> AppCompatDelegate.MODE_NIGHT_NO
-                    Configuration.UI_MODE_NIGHT_NO -> AppCompatDelegate.MODE_NIGHT_YES
-                    else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-                }
-                AppCompatDelegate.setDefaultNightMode(nightModeFlags)
-                recreate()
-
-                return true
-            }
-
-            /** Enables the user to copy the article's source link to share or search on a browser. */
-            R.id.shareLink -> {
-                val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-
-                val snackbar = Snackbar.make(
-                    findViewById(android.R.id.content),
-                    "Link copied",
-                    Snackbar.LENGTH_SHORT
-                )
-
-                snackbar.show()
-
                 return true
             }
 

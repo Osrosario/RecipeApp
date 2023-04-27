@@ -1,11 +1,16 @@
 package edu.quinnipiac.ser210.recipeapp
 
+import android.app.Activity
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat.recreate
+import androidx.fragment.app.Fragment
 import edu.quinnipiac.ser210.recipeapp.databinding.FragmentSettingsBinding
 
 
@@ -24,17 +29,8 @@ class SettingsFragment : Fragment()
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val modeGroup = binding.modeGroup
-
-        when (modeGroup.checkedRadioButtonId)
-        {
-            0 -> { AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) }
-            1 -> { AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES) }
-        }
-
         return view
     }
-
     override fun onDestroyView()
     {
         super.onDestroyView()

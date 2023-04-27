@@ -9,24 +9,4 @@
         android:title="Search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
-
-    <item
-        android:id="@+id/shareLink"
-        android:icon="@android:drawable/ic_menu_share"
-        android:title="share"
-        app:showAsAction="always"
-        android:visible="false"/>
-
-    <item
-        android:id="@+id/helpPopup"
-        android:icon="@android:drawable/ic_menu_help"
-        android:title="help"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/displayMode"
-        android:icon="@android:drawable/ic_menu_view"
-        android:title="displayMode"
-        app:showAsAction="always" />
-
 </menu>
