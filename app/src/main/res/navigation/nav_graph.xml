@@ -10,15 +10,20 @@
         android:name="edu.quinnipiac.ser210.recipeapp.SearchFragment"
         android:label="Search Recipes" >
         <action
-            android:id="@+id/action_searchFragment_to_newRecipeFragment"
-            app:destination="@id/newRecipeFragment" />
+            android:id="@+id/action_searchFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="edu.quinnipiac.ser210.recipeapp.RecipeFragment"
+        android:label="Recipe" >
+        <argument
+            android:name="myBundle"
+            app:argType="android.os.Bundle" />
     </fragment>
     <fragment
         android:id="@+id/newRecipeFragment"
         android:name="edu.quinnipiac.ser210.recipeapp.NewRecipeFragment"
         android:label="New Recipe" >
-        <argument
-            android:name="pos"
-            app:argType="integer" />
     </fragment>
 </navigation>

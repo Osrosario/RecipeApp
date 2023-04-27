@@ -34,8 +34,8 @@ data class Recipe (
     var totalTime: String = "",
 
     @ColumnInfo(name = "ingredients")
-    var ingredients: ArrayList<ArrayList<String>> = Array(8) { ArrayList<String>(3) }.toCollection(ArrayList()),
+    var ingredients: String = "",
 
     @ColumnInfo(name = "instructions")
-    var instructions: ArrayList<String> = ArrayList<String>(8)
+    var instructions: String = ""
 )
