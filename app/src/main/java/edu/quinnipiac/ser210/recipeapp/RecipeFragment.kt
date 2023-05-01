@@ -75,13 +75,6 @@ class RecipeFragment : Fragment()
             }
             instructionsLayout.addView(textView)
         }
-
-        view.setOnClickListener {
-            val activity = view.context as AppCompatActivity
-            val toolbar = activity.findViewById<MaterialToolbar>(edu.quinnipiac.ser210.recipeapp.R.id.materialToolbar)
-            val menuAdd = toolbar.menu.findItem(edu.quinnipiac.ser210.recipeapp.R.id.add)
-        }
-
     }
 
 

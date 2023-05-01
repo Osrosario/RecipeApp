@@ -51,9 +51,9 @@ class SearchFragment : Fragment()
 
         view.setBackgroundColor(Color.WHITE)
 
-        val apiInterface = RecipeInterface.create().searchRecipes(searchTerm)
+        var apiInterface = RecipeInterface.create().searchRecipes(searchTerm)
 
-        if (apiInterface != null)
+        if (apiInterface != null && searchTerm != "null")
         {
             apiInterface?.enqueue(object : Callback<ArrayList<RecipeInfo?>?> {
                 override fun onResponse(
