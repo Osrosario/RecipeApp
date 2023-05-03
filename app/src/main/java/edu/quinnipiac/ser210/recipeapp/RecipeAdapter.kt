@@ -2,6 +2,7 @@ package edu.quinnipiac.ser210.recipeapp
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -78,7 +79,7 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
             itemView.setOnClickListener {
 
                 val activity = itemView.context as AppCompatActivity
-                val toolbar = activity.findViewById<MaterialToolbar>(R.id.toolBar)
+                val toolbar = activity.findViewById<MaterialToolbar>(R.id.materialToolbar)
                 val menuAdd = toolbar.menu.findItem(R.id.add)
                 val menuSearch = toolbar.menu.findItem(R.id.searchRecipe)
                 menuSearch.collapseActionView()

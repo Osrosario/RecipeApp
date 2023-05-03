@@ -21,17 +21,8 @@ data class Recipe (
     @ColumnInfo(name = "title")
     var recipeTitle: String = "",
 
-    @ColumnInfo(name = "imageUrl")
+    @ColumnInfo(name = "servings")
     var imageUrl: String = "",
-
-    @ColumnInfo(name = "prepTime")
-    var prepTime: String = "",
-
-    @ColumnInfo(name = "cookTime")
-    var cookTime: String = "",
-
-    @ColumnInfo(name = "totalTime")
-    var totalTime: String = "",
 
     @ColumnInfo(name = "ingredients")
     var ingredients: String = "",

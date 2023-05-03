@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_searchFragment_to_recipeFragment"
             app:destination="@id/recipeFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_myRecipesFragment"
+            app:destination="@id/myRecipesFragment" />
     </fragment>
     <fragment
         android:id="@+id/recipeFragment"
@@ -20,6 +23,14 @@
         <argument
             android:name="myBundle"
             app:argType="android.os.Bundle" />
+    </fragment>
+    <fragment
+        android:id="@+id/myRecipesFragment"
+        android:name="edu.quinnipiac.ser210.recipeapp.MyRecipesFragment"
+        android:label="My Recipes" >
+        <action
+            android:id="@+id/action_myRecipesFragment_to_newRecipeFragment"
+            app:destination="@id/newRecipeFragment" />
     </fragment>
     <fragment
         android:id="@+id/newRecipeFragment"
@@ -36,4 +47,5 @@
         android:name="edu.quinnipiac.ser210.recipeapp.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" />
+
 </navigation>

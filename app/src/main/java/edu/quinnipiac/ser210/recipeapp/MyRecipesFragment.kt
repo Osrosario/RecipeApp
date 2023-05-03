@@ -1,5 +1,6 @@
 package edu.quinnipiac.ser210.recipeapp
 
+import androidx.fragment.app.FragmentManager
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -8,11 +9,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isInvisible
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.MaterialToolbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,17 +30,14 @@ import retrofit2.Response
  * of recipes and sends it to the RecipeAdapter.kt to display information.
  */
 
-class SearchFragment : Fragment()
+class MyRecipesFragment : Fragment()
 {
     lateinit var recyclerView: RecyclerView
     lateinit var recyclerAdapter: RecipeAdapter
-    lateinit var searchTerm: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
-        val view = inflater.inflate(R.layout.fragment_search, container, false)
-        val searchTerm = arguments?.getString("searchTerm")
-        this.searchTerm = searchTerm.toString()
+        val view = inflater.inflate(R.layout.fragment_my_recipes, container, false)
         return view
     }
 
@@ -49,11 +49,13 @@ class SearchFragment : Fragment()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = recyclerAdapter
 
-        view.setBackgroundColor(Color.WHITE)
+        val application = requireNotNull(this.activity).application
+        val dao = RecipeDatabase.getInstance(application).recipeDAO
+        Log.d("DAO List", dao.toString())
 
-        var apiInterface = RecipeInterface.create().searchRecipes(searchTerm)
-
-        if (apiInterface != null && searchTerm != "null")
+        /*
+        val apiInterface = RecipeInterface.create().searchRecipes(searchTerm)
+        if (apiInterface != null)
         {
             apiInterface?.enqueue(object : Callback<ArrayList<RecipeInfo?>?> {
                 override fun onResponse(
@@ -72,6 +74,8 @@ class SearchFragment : Fragment()
                 }
             })
         }
+
+         */
     }
     override fun onDestroyView() {
         super.onDestroyView()

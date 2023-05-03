@@ -38,9 +38,6 @@ class RecipeViewModel(val dao: RecipeDAO) : ViewModel()
             /** Assign local variables to the data of the recipe. */
             recipe.recipeTitle = newRecipeName
             recipe.imageUrl = newImageUrl
-            recipe.prepTime = newPrepTime
-            recipe.cookTime = newCookTime
-            recipe.totalTime = { newPrepTime.toInt() + newCookTime.toInt() }.toString()
             recipe.ingredients = newIngredientList.joinToString(separator = ".")
             recipe.instructions = newInstructionList.joinToString(separator = ".")
 

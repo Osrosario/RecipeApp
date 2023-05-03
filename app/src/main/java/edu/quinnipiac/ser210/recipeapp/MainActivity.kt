@@ -1,14 +1,7 @@
 package edu.quinnipiac.ser210.recipeapp
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
@@ -32,27 +25,29 @@ import edu.quinnipiac.ser210.recipeapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity()
 {
-    private var _binding: ActivityMainBinding? = null
-    private val binding get() = _binding!!
-
     private lateinit var searchItem: MenuItem
+    private lateinit var binding: ActivityMainBinding
     
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        _binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         /** Finds the toolbar and sets the toolbar to be app's default toolbar. */
-        val toolbar = binding.toolBar
+
+        val toolbar = binding.materialToolbar
         setSupportActionBar(toolbar)
+
+
 
         /**
          * Finds the Navigation Controller and sets the toolbar to navigate to the previous
          * fragment and drawer to navigate between fragments.
          */
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
+
+        val navController = (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
+        binding.materialToolbar.setupWithNavController(navController)
         val drawer = binding.drawerLayout
         val builder = AppBarConfiguration.Builder(navController.graph)
         builder.setOpenableLayout(drawer)
@@ -62,6 +57,7 @@ class MainActivity : AppCompatActivity()
         /** Enable navigation when an item is clicked */
         val navView = binding.navView
         NavigationUI.setupWithNavController(navView, navController)
+
     }
 
     /** Inflate any menu items to the toolbar. */
