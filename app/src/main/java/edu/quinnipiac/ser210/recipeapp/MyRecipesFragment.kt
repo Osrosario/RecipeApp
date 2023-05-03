@@ -1,5 +1,6 @@
 package edu.quinnipiac.ser210.recipeapp
 
+import android.content.Context
 import androidx.fragment.app.FragmentManager
 import android.graphics.Color
 import android.os.Bundle
@@ -16,6 +17,10 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,13 +32,13 @@ import retrofit2.Response
  *
  * The SearchFragment class is responsible for creating a recycler view. If a RecipeInterface does not exist,
  * a error message will be displayed, otherwise, creates an RecipeInterface object and extracts a list
- * of recipes and sends it to the RecipeAdapter.kt to display information.
+ * of recipes and sends it to the MyRecipesAdapter.kt to display information.
  */
 
 class MyRecipesFragment : Fragment()
 {
     lateinit var recyclerView: RecyclerView
-    lateinit var recyclerAdapter: RecipeAdapter
+    lateinit var recyclerAdapter: MyRecipesAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -44,38 +49,25 @@ class MyRecipesFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView = view.findViewById(R.id.recyclerview)
-        recyclerAdapter = RecipeAdapter(requireContext(), Navigation.findNavController(view))
+        recyclerView = view.findViewById(R.id.recipes_recyclerview)
+        recyclerAdapter = MyRecipesAdapter(requireContext(), Navigation.findNavController(view))
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = recyclerAdapter
 
-        val application = requireNotNull(this.activity).application
-        val dao = RecipeDatabase.getInstance(application).recipeDAO
-        Log.d("DAO List", dao.toString())
-
-        /*
-        val apiInterface = RecipeInterface.create().searchRecipes(searchTerm)
-        if (apiInterface != null)
-        {
-            apiInterface?.enqueue(object : Callback<ArrayList<RecipeInfo?>?> {
-                override fun onResponse(
-                    call: Call<ArrayList<RecipeInfo?>?>,
-                    response: Response<ArrayList<RecipeInfo?>?>
-                ) {
-                    if (response.body() != null) {
-                        recyclerAdapter.setRecipeListItems(response.body()!! as ArrayList<RecipeInfo>)
-                    }
+        GlobalScope.launch(Dispatchers.IO) {
+            val allRecipes = getAllRecipesFromDatabase(requireContext())
+            withContext(Dispatchers.Main) {
+                allRecipes?.let {
+                    recyclerAdapter.setRecipeListItems(ArrayList(it))
                 }
-
-                override fun onFailure(call: Call<ArrayList<RecipeInfo?>?>, t: Throwable) {
-                    if (t != null) {
-                        t.message?.let { Log.d("onFailure", it) }
-                    }
-                }
-            })
+            }
         }
 
-         */
+    }
+
+    suspend fun getAllRecipesFromDatabase(context: Context): List<Recipe>? {
+        val recipeDao = RecipeDatabase.getDatabase(context).recipeDAO()
+        return recipeDao.getAll()
     }
     override fun onDestroyView() {
         super.onDestroyView()

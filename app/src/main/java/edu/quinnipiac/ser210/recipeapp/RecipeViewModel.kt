@@ -20,9 +20,7 @@ class RecipeViewModel(val dao: RecipeDAO) : ViewModel()
 {
     /** Initial variables replicating the columns of the Recipe data class */
     var newRecipeName = ""
-    var newImageUrl = ""
-    var newPrepTime = ""
-    var newCookTime = ""
+    var newServings = ""
     var newIngredientList = ArrayList<String>(8)
     var newInstructionList = ArrayList<String>(8)
 
@@ -33,16 +31,20 @@ class RecipeViewModel(val dao: RecipeDAO) : ViewModel()
     {
         viewModelScope.launch {
             /** Create a new recipe from the Recipe. */
-            val recipe = Recipe()
-
+            val newRecipe = Recipe(
+                title = newRecipeName,
+                servings = newServings,
+                ingredients = newIngredientList.toString(),
+                instructions = newInstructionList.toString()
+            )
             /** Assign local variables to the data of the recipe. */
-            recipe.recipeTitle = newRecipeName
-            recipe.imageUrl = newImageUrl
-            recipe.ingredients = newIngredientList.joinToString(separator = ".")
-            recipe.instructions = newInstructionList.joinToString(separator = ".")
+            newRecipe.title = newRecipeName
+            newRecipe.servings = newServings
+            newRecipe.ingredients = newIngredientList.joinToString(separator = "|").toString()
+            newRecipe.instructions = newInstructionList.joinToString(separator = ".")
 
             /** Add new recipe to the database. */
-            dao.insertRecipe(recipe)
+            dao.insert(newRecipe)
         }
     }
 }

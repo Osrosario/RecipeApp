@@ -14,19 +14,20 @@ import androidx.room.PrimaryKey
  */
 
 @Entity(tableName = "recipeTable")
-data class Recipe (
+data class Recipe(
     @PrimaryKey(autoGenerate = true)
-    var recipeId: Long = 0L,
+    //@ColumnInfo(name = "id")
+    val recipeId: Long = 0L,
 
     @ColumnInfo(name = "title")
-    var recipeTitle: String = "",
+    var title: String,
 
     @ColumnInfo(name = "servings")
-    var imageUrl: String = "",
+    var servings: String,
 
     @ColumnInfo(name = "ingredients")
-    var ingredients: String = "",
+    var ingredients: String,
 
     @ColumnInfo(name = "instructions")
-    var instructions: String = ""
+    var instructions: String
 )

@@ -2,18 +2,15 @@ package edu.quinnipiac.ser210.recipeapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
-import androidx.appcompat.widget.Toolbar
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textview.MaterialTextView
 import edu.quinnipiac.ser210.recipeapp.databinding.ActivityMainBinding
 
 /**
@@ -114,7 +111,8 @@ class MainActivity : AppCompatActivity()
             /**
              * Enables the user to copy the article's source link to share or search on a browser.
              **/
-            R.id.add -> {
+/*
+            R.id.add_recipe -> {
 
                 val snackbar = Snackbar.make(
                     findViewById(android.R.id.content),
@@ -126,6 +124,8 @@ class MainActivity : AppCompatActivity()
 
                 return true
             }
+
+ */
 
             else -> return super.onOptionsItemSelected(item)
         }

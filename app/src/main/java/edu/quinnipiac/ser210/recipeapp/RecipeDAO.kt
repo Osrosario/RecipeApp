@@ -1,10 +1,7 @@
 package edu.quinnipiac.ser210.recipeapp
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 /**
  * @title Make Meals
@@ -17,17 +14,22 @@ import androidx.room.Update
  */
 
 @Dao
-interface RecipeDAO
-{
+interface RecipeDAO {
     @Insert
-    suspend fun insertRecipe(recipe: Recipe)
+    suspend fun insert(recipe: Recipe)
 
     @Update
-    suspend fun updateRecipe(recipe: Recipe)
+    suspend fun update(recipe: Recipe)
+
+    @Delete
+    suspend fun delete(recipe: Recipe)
+
+    @Query("SELECT * FROM recipeTable WHERE title = :recipeTitle")
+    suspend fun getRecipeByTitle(recipeTitle: String): Recipe?
 
     @Query("SELECT * FROM recipeTable WHERE recipeId = :recipeId")
     fun get(recipeId: Long): LiveData<Recipe>
 
-    @Query("SELECT * FROM recipeTable ORDER BY recipeId DESC")
-    fun getAll(): LiveData<List<Recipe>>
+    @Query("SELECT * FROM recipeTable")
+    suspend fun getAll(): List<Recipe>
 }
