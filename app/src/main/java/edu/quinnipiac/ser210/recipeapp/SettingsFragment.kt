@@ -29,6 +29,14 @@ class SettingsFragment : Fragment()
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        binding.darkModeRadioButton.setOnClickListener() {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+
+        binding.lightModeRadioButton.setOnClickListener {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
         return view
     }
     override fun onDestroyView()
