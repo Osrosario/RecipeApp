@@ -23,9 +23,9 @@ import com.google.android.material.appbar.MaterialToolbar
  * upon that id.
  */
 
-var recipeList : ArrayList<RecipeInfo> = ArrayList()
+var myRecipesList : ArrayList<Recipe> = ArrayList()
 
-class RecipeAdapter(val context: Context,  var navController: NavController) : RecyclerView.Adapter<RecipeAdapter.MyViewHolder>()
+class MyRecipesAdapter(val context: Context,  var navController: NavController) : RecyclerView.Adapter<MyRecipesAdapter.MyViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder
     {
@@ -35,7 +35,7 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
 
     override fun getItemCount(): Int
     {
-        return recipeList.size
+        return myRecipesList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int)
@@ -43,29 +43,29 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
         holder.bind(position)
     }
 
-    fun setRecipeListItems(recipeListparam: ArrayList<RecipeInfo>)
+    fun setRecipeListItems(myRecipesListparam: ArrayList<Recipe>)
     {
-        recipeList = recipeListparam
+        myRecipesList = myRecipesListparam
         notifyDataSetChanged()
     }
 
-    override fun onViewRecycled(holder: MyViewHolder) 
+    override fun onViewRecycled(holder: MyViewHolder)
     {
         super.onViewRecycled(holder)
         holder.itemView.setOnClickListener(null)
-        recipeList.clear()
+        myRecipesList.clear()
     }
 
     override fun onDetachedFromRecyclerView(recyclerView: RecyclerView)
     {
         super.onDetachedFromRecyclerView(recyclerView)
-        recipeList.clear()
+        myRecipesList.clear()
         notifyDataSetChanged()
     }
 
-    fun removeRecipeListItems() 
+    fun removeRecipeListItems()
     {
-        recipeList.clear()
+        myRecipesList.clear()
         notifyDataSetChanged()
     }
 
@@ -87,13 +87,13 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
                 //menuAdd.isVisible = !menuAdd.isVisible
 
                 val bundle = Bundle().apply {
-                    putString("title", recipeList.get(pos).title)
-                    putString("servings", recipeList.get(pos).servings)
-                    putString("ingredients", recipeList.get(pos).ingredients)
-                    putString("instructions", recipeList.get(pos).instructions)
+                    putString("title", myRecipesList.get(pos).title)
+                    putString("servings", myRecipesList.get(pos).servings)
+                    putString("ingredients", myRecipesList.get(pos).ingredients)
+                    putString("instructions", myRecipesList.get(pos).instructions)
                 }
 
-                val action = SearchFragmentDirections.actionSearchFragmentToRecipeFragment(bundle)
+                val action = MyRecipesFragmentDirections.actionMyRecipesFragmentToRecipeFragment(bundle)
                 navController.navigate(action)
             }
         }
@@ -102,7 +102,7 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
         {
             pos = position
             title
-            val currRecipe = recipeList.get(position)
+            val currRecipe = myRecipesList.get(position)
             title.text = currRecipe.title
         }
     }

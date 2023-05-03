@@ -7,11 +7,10 @@
             android:icon="@drawable/vector_graphic_search"
             android:title="Search" />
 
-        <!--
+
         <item
-            android:id="@+id/cookbookFragment"
-            android:icon="@drawable/baseline_book_24"
-            android:title="Cook Book" /> -->
+            android:id="@+id/myRecipesFragment"
+            android:title="My Recipes" />
     </group>
 
     <group android:checkableBehavior="single">

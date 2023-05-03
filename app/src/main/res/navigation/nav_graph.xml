@@ -29,8 +29,8 @@
         android:name="edu.quinnipiac.ser210.recipeapp.MyRecipesFragment"
         android:label="My Recipes" >
         <action
-            android:id="@+id/action_myRecipesFragment_to_newRecipeFragment"
-            app:destination="@id/newRecipeFragment" />
+            android:id="@+id/action_myRecipesFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
     </fragment>
     <fragment
         android:id="@+id/newRecipeFragment"

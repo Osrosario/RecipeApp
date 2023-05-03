@@ -52,9 +52,9 @@ class SearchFragment : Fragment()
         view.setBackgroundColor(Color.WHITE)
 
         var apiInterface = RecipeInterface.create().searchRecipes(searchTerm)
-
         if (apiInterface != null && searchTerm != "null")
         {
+            Log.d("SearchFragment","searching")
             apiInterface?.enqueue(object : Callback<ArrayList<RecipeInfo?>?> {
                 override fun onResponse(
                     call: Call<ArrayList<RecipeInfo?>?>,
@@ -73,6 +73,7 @@ class SearchFragment : Fragment()
             })
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         recyclerAdapter.removeRecipeListItems()

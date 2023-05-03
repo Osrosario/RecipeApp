@@ -15,28 +15,22 @@ import androidx.room.RoomDatabase
  */
 
 @Database(entities = [Recipe::class], version = 1, exportSchema = false)
-abstract class RecipeDatabase : RoomDatabase()
-{
-    abstract val recipeDAO: RecipeDAO
+abstract class RecipeDatabase : RoomDatabase() {
+    abstract fun recipeDAO(): RecipeDAO
 
-    companion object
-    {
+    companion object {
         @Volatile
         private var INSTANCE: RecipeDatabase? = null
 
-        fun getInstance(context: Context): RecipeDatabase
-        {
-            synchronized(this)
-            {
-                var instance = INSTANCE
-
-                if (instance == null)
-                {
-                    instance = Room.databaseBuilder(context.applicationContext, RecipeDatabase::class.java, "recipe_dataBase").build()
-                    INSTANCE = instance
-                }
-
-                return instance
+        fun getDatabase(context: Context): RecipeDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    RecipeDatabase::class.java,
+                    "recipe_database"
+                ).build()
+                INSTANCE = instance
+                instance
             }
         }
     }

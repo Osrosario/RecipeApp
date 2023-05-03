@@ -1,19 +1,23 @@
 package edu.quinnipiac.ser210.recipeapp
 
-import android.R
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.GridLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.appbar.MaterialToolbar
+import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.lifecycleScope
+
+import com.google.android.material.snackbar.Snackbar
 import edu.quinnipiac.ser210.recipeapp.databinding.FragmentRecipeBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * @author Michael Ruocco, Omar Rosario
@@ -28,6 +32,7 @@ class RecipeFragment : Fragment()
     lateinit var args: RecipeFragmentArgs
     private var _binding: FragmentRecipeBinding? = null
     private val binding get() = _binding !!
+    private var id: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -75,6 +80,44 @@ class RecipeFragment : Fragment()
             }
             instructionsLayout.addView(textView)
         }
+
+        binding.addButton.setOnClickListener {
+            val recipeName = args.myBundle.getString("title").toString()
+            val recipeServings = args.myBundle.getString("servings").toString()
+            val recipeIngredients = args.myBundle.getString("ingredients").toString()
+            val recipeInstructions = args.myBundle.getString("instructions").toString()
+
+            val newRecipe = Recipe(
+                title = recipeName,
+                servings = recipeServings,
+                ingredients = recipeIngredients,
+                instructions = recipeInstructions
+            )
+
+            GlobalScope.launch(Dispatchers.IO) {
+                addRecipeToDatabase(newRecipe, requireContext())
+            }
+            Snackbar.make(requireView(), "Recipe added", Snackbar.LENGTH_SHORT).show()
+
+            GlobalScope.launch(Dispatchers.IO) {
+                val recipe = getRecipeFromDatabase( recipeName, requireContext())
+                recipe?.let {
+                    // Do something with the recipe, such as display it in a TextView
+                    Log.d("Recipe", "Title: ${it.title}, Servings: ${it.servings}, Ingredients: ${it.ingredients}, Instructions: ${it.instructions}")
+                }
+            }
+
+        }
+    }
+
+    suspend fun addRecipeToDatabase(recipe: Recipe, context: Context) {
+        val recipeDao = RecipeDatabase.getDatabase(context).recipeDAO()
+        recipeDao.insert(recipe)
+    }
+
+    suspend fun getRecipeFromDatabase(recipeTitle: String, context: Context): Recipe? {
+        val recipeDao = RecipeDatabase.getDatabase(context).recipeDAO()
+        return recipeDao.getRecipeByTitle(recipeTitle)
     }
 
 

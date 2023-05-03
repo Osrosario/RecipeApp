@@ -39,7 +39,7 @@ class NewRecipeFragment : Fragment()
 
         /** Builds the database, RecipeDAO, (if it doesn't already exist) and get a reference to the RecipeDAO property */
         val application = requireNotNull(this.activity).application
-        val dao = RecipeDatabase.getInstance(application).recipeDAO
+        val dao = RecipeDatabase.getDatabase(application).recipeDAO()
 
         /** Retrieves View Model */
         val viewModelFactory = RecipeViewModelFactory(dao)
