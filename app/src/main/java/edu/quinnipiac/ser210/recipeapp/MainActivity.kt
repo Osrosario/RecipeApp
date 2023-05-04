@@ -108,25 +108,6 @@ class MainActivity : AppCompatActivity()
                 return true
             }
 
-            /**
-             * Enables the user to copy the article's source link to share or search on a browser.
-             **/
-/*
-            R.id.add_recipe -> {
-
-                val snackbar = Snackbar.make(
-                    findViewById(android.R.id.content),
-                    "Recipe added",
-                    Snackbar.LENGTH_SHORT
-                )
-
-                snackbar.show()
-
-                return true
-            }
-
- */
-
             else -> return super.onOptionsItemSelected(item)
         }
 

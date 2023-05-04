@@ -1,15 +1,9 @@
 package edu.quinnipiac.ser210.recipeapp
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.view.CollapsibleActionView
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.isInvisible
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -49,7 +43,8 @@ class SearchFragment : Fragment()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = recyclerAdapter
 
-        view.setBackgroundColor(Color.WHITE)
+
+        //view.setBackgroundColor(Color.WHITE)
 
         var apiInterface = RecipeInterface.create().searchRecipes(searchTerm)
         if (apiInterface != null && searchTerm != "null")

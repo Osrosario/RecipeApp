@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.widget.GridLayout
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.lifecycleScope
 
@@ -33,6 +34,7 @@ class RecipeFragment : Fragment()
     private var _binding: FragmentRecipeBinding? = null
     private val binding get() = _binding !!
     private var id: Long = 0
+    private var flag = 0
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -81,6 +83,7 @@ class RecipeFragment : Fragment()
             instructionsLayout.addView(textView)
         }
 
+        binding.addButton.isVisible = args.myBundle.getInt("flag") != 2
         binding.addButton.setOnClickListener {
             val recipeName = args.myBundle.getString("title").toString()
             val recipeServings = args.myBundle.getString("servings").toString()

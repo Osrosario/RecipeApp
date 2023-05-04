@@ -1,36 +1,23 @@
 package edu.quinnipiac.ser210.recipeapp
 
 import android.content.Context
-import androidx.fragment.app.FragmentManager
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.view.CollapsibleActionView
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.isInvisible
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 /**
  * @title Make Meals
  * @author Michael Ruocco, Omar Rosario
  * @date 5/X/2023
  *
- * The SearchFragment class is responsible for creating a recycler view. If a RecipeInterface does not exist,
+ * The MyRecipesFragment class is responsible for creating a recycler view. If a RecipeInterface does not exist,
  * a error message will be displayed, otherwise, creates an RecipeInterface object and extracts a list
  * of recipes and sends it to the MyRecipesAdapter.kt to display information.
  */
@@ -64,6 +51,7 @@ class MyRecipesFragment : Fragment()
         }
 
     }
+
 
     suspend fun getAllRecipesFromDatabase(context: Context): List<Recipe>? {
         val recipeDao = RecipeDatabase.getDatabase(context).recipeDAO()
