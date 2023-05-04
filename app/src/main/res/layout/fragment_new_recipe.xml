@@ -21,12 +21,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/recipeImage"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:src="@drawable/recipe" />
-
             <EditText
                 android:id="@+id/nameEditText"
                 android:layout_width="wrap_content"
@@ -40,6 +34,20 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:hint="Recipe Name" />
+
+            <EditText
+                android:id="@+id/servingsEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="@={viewModel.newServings}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:hint="Servings" />
 
             <TextView
                 android:id="@+id/ingredientsLabel"
@@ -61,14 +69,14 @@
                 android:background="@color/black" />
 
             <EditText
-                android:id="@+id/name1"
+                android:id="@+id/ingredient1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:hint="Ingredient"
                 android:inputType="text"
-                android:text="@={viewModel.newIngredientList[0]}"
+                android:text="@={viewModel.newIng1}"
                 android:textSize="18sp" />
 
             <EditText
@@ -79,7 +87,7 @@
                 android:layout_gravity="center"
                 android:hint="Ingredient"
                 android:inputType="text"
-                android:text="@={viewModel.newIngredientList[1]}"
+                android:text="@={viewModel.newIng2}"
                 android:textSize="18sp" />
 
             <EditText
@@ -90,7 +98,7 @@
                 android:layout_gravity="center"
                 android:hint="Ingredient"
                 android:inputType="text"
-                android:text="@={viewModel.newIngredientList[2]}"
+                android:text="@={viewModel.newIng3}"
                 android:textSize="18sp" />
 
             <EditText
@@ -101,7 +109,7 @@
                 android:layout_gravity="center"
                 android:hint="Ingredient"
                 android:inputType="text"
-                android:text="@={viewModel.newIngredientList[3]}"
+                android:text="@={viewModel.newIng4}"
                 android:textSize="18sp" />
 
             <EditText
@@ -112,7 +120,7 @@
                 android:layout_gravity="center"
                 android:hint="Ingredient"
                 android:inputType="text"
-                android:text="@={viewModel.newIngredientList[4]}"
+                android:text="@={viewModel.newIng5}"
                 android:textSize="18sp" />
 
             <EditText
@@ -123,7 +131,7 @@
                 android:layout_gravity="center"
                 android:hint="Ingredient"
                 android:inputType="text"
-                android:text="@={viewModel.newIngredientList[5]}"
+                android:text="@={viewModel.newIng6}"
                 android:textSize="18sp" />
 
             <EditText
@@ -134,7 +142,7 @@
                 android:layout_gravity="center"
                 android:hint="Ingredient"
                 android:inputType="text"
-                android:text="@={viewModel.newIngredientList[6]}"
+                android:text="@={viewModel.newIng7}"
                 android:textSize="18sp" />
 
             <EditText
@@ -145,7 +153,7 @@
                 android:layout_gravity="center"
                 android:hint="Ingredient"
                 android:inputType="text"
-                android:text="@={viewModel.newIngredientList[7]}"
+                android:text="@={viewModel.newIng8}"
                 android:textSize="18sp" />
 
             <TextView
@@ -194,7 +202,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructionList[0]}"
+                        android:text="@={viewModel.newIns1}"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -220,7 +228,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructionList[1]}"
+                        android:text="@={viewModel.newIns2}"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -246,7 +254,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructionList[2]}"
+                        android:text="@={viewModel.newIns3}"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -272,7 +280,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructionList[3]}"
+                        android:text="@={viewModel.newIns4}"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -298,7 +306,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructionList[4]}"
+                        android:text="@={viewModel.newIns5}"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -324,7 +332,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructionList[5]}"
+                        android:text="@={viewModel.newIns6}"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -350,7 +358,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructionList[6]}"
+                        android:text="@={viewModel.newIns7}"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -375,7 +383,7 @@
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:hint="instruction"
-                        android:text="@={viewModel.newInstructionList[7]}"
+                        android:text="@={viewModel.newIns8}"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>

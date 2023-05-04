@@ -1,5 +1,6 @@
 package edu.quinnipiac.ser210.recipeapp
 
+import android.util.Log
 import android.view.View
 import android.widget.RadioButton
 import androidx.databinding.BindingAdapter
@@ -21,11 +22,37 @@ class RecipeViewModel(val dao: RecipeDAO) : ViewModel()
     /** Initial variables replicating the columns of the Recipe data class */
     var newRecipeName = ""
     var newServings = ""
-    var newIngredientList = ArrayList<String>(8)
-    var newInstructionList = ArrayList<String>(8)
+    var newIngredientList = ArrayList<String>(1)
+    var newInstructionList = ArrayList<String>(1)
+    var newIngredients = ""
+    var newInstructions = ""
+    var newIng1 = ""
+    var newIng2 = ""
+    var newIng3 = ""
+    var newIng4 = ""
+    var newIng5 = ""
+    var newIng6 = ""
+    var newIng7 = ""
+    var newIng8 = ""
+    var newIns1 = ""
+    var newIns2 = ""
+    var newIns3 = ""
+    var newIns4 = ""
+    var newIns5 = ""
+    var newIns6 = ""
+    var newIns7 = ""
+    var newIns8 = ""
 
-    fun addIngredient(ingredient: String) = newIngredientList.add(ingredient)
-    fun addInstruction(instruction: String) = newInstructionList.add(instruction)
+    fun addIngredient(ingredient: String) {
+        if (ingredient != "") {
+            newIngredientList.add(ingredient)
+        }
+    }
+    fun addInstruction(instruction: String) {
+        if (instruction != "") {
+            newInstructionList.add(instruction)
+        }
+    }
 
     fun addRecipe(): Unit
     {
@@ -34,14 +61,33 @@ class RecipeViewModel(val dao: RecipeDAO) : ViewModel()
             val newRecipe = Recipe(
                 title = newRecipeName,
                 servings = newServings,
-                ingredients = newIngredientList.toString(),
-                instructions = newInstructionList.toString()
+                ingredients = newIngredients,
+                instructions = newInstructions
             )
             /** Assign local variables to the data of the recipe. */
+            addIngredient(newIng1)
+            addIngredient(newIng2)
+            addIngredient(newIng3)
+            addIngredient(newIng4)
+            addIngredient(newIng5)
+            addIngredient(newIng6)
+            addIngredient(newIng7)
+            addIngredient(newIng8)
+            addInstruction(newIns1)
+            addInstruction(newIns2)
+            addInstruction(newIns3)
+            addInstruction(newIns4)
+            addInstruction(newIns5)
+            addInstruction(newIns6)
+            addInstruction(newIns7)
+            addInstruction(newIns8)
+            newIngredients = newIngredientList.joinToString("|")
+            //Log.d("Ingredients", newIngredientList[0])
+            newInstructions = newInstructionList.joinToString(".")
             newRecipe.title = newRecipeName
-            newRecipe.servings = newServings
-            newRecipe.ingredients = newIngredientList.joinToString(separator = "|").toString()
-            newRecipe.instructions = newInstructionList.joinToString(separator = ".")
+            newRecipe.servings = "$newServings Servings"
+            newRecipe.ingredients = newIngredients
+            newRecipe.instructions = newInstructions
 
             /** Add new recipe to the database. */
             dao.insert(newRecipe)

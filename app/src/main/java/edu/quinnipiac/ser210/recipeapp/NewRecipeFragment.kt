@@ -2,6 +2,7 @@ package edu.quinnipiac.ser210.recipeapp
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import edu.quinnipiac.ser210.recipeapp.databinding.FragmentNewRecipeBinding
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * @title Make Meals
@@ -47,6 +49,10 @@ class NewRecipeFragment : Fragment()
 
         /** Enables data binding to access the View Model's properties and methods in the XML file */
         binding.viewModel = viewModel
+
+        binding.addButton.setOnClickListener {
+            Snackbar.make(requireView(), "Recipe added", Snackbar.LENGTH_SHORT).show()
+        }
 
         return view
     }

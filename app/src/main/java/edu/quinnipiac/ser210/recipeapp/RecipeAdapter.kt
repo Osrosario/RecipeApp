@@ -80,11 +80,9 @@ class RecipeAdapter(val context: Context,  var navController: NavController) : R
 
                 val activity = itemView.context as AppCompatActivity
                 val toolbar = activity.findViewById<MaterialToolbar>(R.id.materialToolbar)
-                //val menuAdd = toolbar.menu.findItem(R.id.add_recipe)
                 val menuSearch = toolbar.menu.findItem(R.id.searchRecipe)
                 menuSearch.collapseActionView()
                 menuSearch.isVisible = !menuSearch.isVisible
-                //menuAdd.isVisible = !menuAdd.isVisible
 
                 val bundle = Bundle().apply {
                     putString("title", recipeList.get(pos).title)

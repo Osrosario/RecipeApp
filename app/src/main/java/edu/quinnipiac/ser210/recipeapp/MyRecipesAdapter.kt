@@ -80,17 +80,16 @@ class MyRecipesAdapter(val context: Context,  var navController: NavController) 
 
                 val activity = itemView.context as AppCompatActivity
                 val toolbar = activity.findViewById<MaterialToolbar>(R.id.materialToolbar)
-                //val menuAdd = toolbar.menu.findItem(R.id.add_recipe)
                 val menuSearch = toolbar.menu.findItem(R.id.searchRecipe)
                 menuSearch.collapseActionView()
                 menuSearch.isVisible = !menuSearch.isVisible
-                //menuAdd.isVisible = !menuAdd.isVisible
 
                 val bundle = Bundle().apply {
                     putString("title", myRecipesList.get(pos).title)
                     putString("servings", myRecipesList.get(pos).servings)
                     putString("ingredients", myRecipesList.get(pos).ingredients)
                     putString("instructions", myRecipesList.get(pos).instructions)
+                    putInt("flag", 2)
                 }
 
                 val action = MyRecipesFragmentDirections.actionMyRecipesFragmentToRecipeFragment(bundle)
