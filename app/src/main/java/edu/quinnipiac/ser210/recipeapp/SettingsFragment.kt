@@ -3,6 +3,7 @@ package edu.quinnipiac.ser210.recipeapp
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +39,12 @@ class SettingsFragment : Fragment()
         }
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
+    {
+        super.onViewCreated(view, savedInstanceState)
+        view.setBackgroundColor(Color.WHITE)
     }
     override fun onDestroyView()
     {
